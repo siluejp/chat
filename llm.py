@@ -3,6 +3,8 @@ import re
 import urllib.request
 from simple_tokenizer_v1 import SimpleTokenizerV1
 from simple_tokenizer_v2 import SimpleTokenizerV2
+from importlib.metadata import version
+import tiktoken
 
 if not os.path.exists("the-verdict.txt"):
     url = ("https://raw.githubusercontent.com/rasbt/"
@@ -54,3 +56,17 @@ tokenizer = SimpleTokenizerV2(vocab)
 print(tokenizer.encode(text))
 
 print(tokenizer.decode(tokenizer.encode(text)))
+
+print("tiktoken version:", version("tiktoken"))
+
+tokenizer = tiktoken.get_encoding("gpt2")
+
+text = (
+    "Hello, do you like tea? <|endoftext|> In the sunlit terraces"
+    "of someunknownPalace."
+)
+integers = tokenizer.encode(text, allowed_special={"<|endoftext|>"})
+print(integers)
+
+strings = tokenizer.decode(integers)
+print(strings)
