@@ -1,1 +1,7 @@
-fastapi[all]
+fastapi==0.115.*
+uvicorn[standard]
+gunicorn
+pydantic
+python-dotenv
+line-bot-sdk==3.17.*
+tiktoken
