@@ -5,3 +5,6 @@ pydantic
 python-dotenv
 line-bot-sdk==3.17.*
 tiktoken
+torch
+torchvision
+torchaudio
